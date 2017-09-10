@@ -86,4 +86,13 @@ public class ShaderHelper {
             throw new RuntimeException(op + ": glError " + error);
         }
     }
+
+    public static int buildProgram(String vertexShaderSource, String fragmentShaderSource) {
+        int vertexShader = compileVertexShader(vertexShaderSource);
+        int fragmentShader = compileFragmentShader(fragmentShaderSource);
+
+        int program = linkProgram(vertexShader, fragmentShader);
+        validateProgram(program);
+        return program;
+    }
 }

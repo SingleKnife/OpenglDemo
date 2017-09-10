@@ -2,6 +2,9 @@ package com.fyd.opengldemo.object;
 
 import com.fyd.opengldemo.Constants;
 import com.fyd.opengldemo.data.VertexArray;
+import com.fyd.opengldemo.program.TextureShaderProgram;
+
+import static android.opengl.GLES20.*;
 
 /**
  * Created by fyd225 on 2017/5/23.
@@ -29,5 +32,17 @@ public class Table {
         vertexArray = new VertexArray(VERTEX_DATA);
     }
 
-    public void bindData(Texture)
+    public void bindData(TextureShaderProgram textureShaderProgram) {
+        vertexArray.setVertexAttribPointer(0, textureShaderProgram.getPositionAttributeLocation(),
+                POSITION_COMPONENT_COUNT, STRIDE);
+
+        vertexArray.setVertexAttribPointer(POSITION_COMPONENT_COUNT,
+                textureShaderProgram.getTextureCoordinatesAttributeLocation(),
+                TEXTURE_COORDINATES_COMPONENT_COUNT,
+                STRIDE);
+    }
+
+    public void draw() {
+        glDrawArrays(GL_TRIANGLE_FAN, 0, 6);
+    }
 }
