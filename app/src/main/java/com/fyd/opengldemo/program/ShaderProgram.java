@@ -12,16 +12,17 @@ import com.fyd.opengldemo.util.TextResourceReader;
  */
 
 public class ShaderProgram {
-    protected static final String U_MATRIX = "u_Matrix";
-    protected static final String U_TEXTURE_UNIT = "u_TextureUnit";
+    static final String U_MATRIX = "u_Matrix";
+    static final String U_TEXTURE_UNIT = "u_TextureUnit";
 
-    protected static final String A_POSITION = "a_Position";
-    protected static final String A_COLOR = "a_Color";
-    protected static final String A_TEXTURE_COORDINATES = "a_TextureCoordinates";
+    static final String A_POSITION = "a_Position";
+    static final String A_TEXTURE_COORDINATES = "a_TextureCoordinates";
 
-    protected final int program;
+    static final String U_COLOR = "u_Color";
 
-    protected ShaderProgram(Context context, int vertexShaderResourceId, int fragmentShaderResourceId) {
+    final int program;
+
+    ShaderProgram(Context context, int vertexShaderResourceId, int fragmentShaderResourceId) {
         program = ShaderHelper.buildProgram(
                 TextResourceReader.readTextFileFromResource(context, vertexShaderResourceId),
                 TextResourceReader.readTextFileFromResource(context, fragmentShaderResourceId));

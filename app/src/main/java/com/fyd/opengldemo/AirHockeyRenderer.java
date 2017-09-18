@@ -76,7 +76,7 @@ public class AirHockeyRenderer implements GLSurfaceView.Renderer {
         table.draw();
 
         colorProgram.useProgram();
-        colorProgram.setUniforms(projectionMatrix);
+//        colorProgram.setUniforms(projectionMatrix);
         mallet.bindData(colorProgram);
         mallet.draw();
     }
